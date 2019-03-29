@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'about.dart';
 
 String title = "My Statement";
 String topText = "View some sample photos of what your building could look like";
@@ -11,52 +12,36 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: Scaffold(
-        drawer: Drawer(),
+        drawer: Drawer(), 
         appBar: AppBar(
-           title: new Center(child: Text(title),),
+           title: new Center(child: Center(child: Text(title),),),
           backgroundColor: Colors.redAccent,
-
         ),
-        body: new Card(
-          child: new Column(
+
+        body:  new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new Container(
-                padding: new EdgeInsets.all( 25.0),
-                child: new Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    new Text(
-                        '\$  ',
-                        style: new TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: 'Roboto',
-                          color: new Color(0xFF26C6DA),
-                        )
-                    ),
-                    new Text(
-                      '3,435.23',
-                      style: new TextStyle(
-                          fontSize: 35.0,
-                          fontFamily: 'Roboto',
-                          color: new Color(0xFF26C6DA)
-                      ),
-                    )
-                  ],
-                ),
+              new Padding(  padding: EdgeInsets.all(25.0),  child: const Card(
+              child: Center(child:
+              Text( "View some sample photos of what your building could look like", style: TextStyle( fontSize: 15.0, ),),
+              
+              
               ),
-              new Text('general balance'),
-            ],
-          ),
-        ),
+              ),
+              //
+              ),
 
-//        body: new Padding(  padding: EdgeInsets.all(25.0),  child: const Card(
-//          child: Center(child:
-//          Text( "View some sample photos of what your building could look like", style: TextStyle( fontSize: 15.0, ),),
-//          ),
-//)
-//        ),
+              Image.asset('assets/logo.png', height:200.0, ),
+              Container(child: 
+               new RaisedButton(
+                onPressed: () {},
+                child: Text("DOWNLOAD"),)
+              ,),
+              ],
+          ), 
+        
+
+
       ),
       
     );
