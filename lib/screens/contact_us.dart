@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'my_flutter_app_icons.dart';
 
-String title = "My Statement";
+String title = "Contact Us";
 String about =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptatevelit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-void main() => runApp(new About());
-
-class About extends StatelessWidget {
+class ContactUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
