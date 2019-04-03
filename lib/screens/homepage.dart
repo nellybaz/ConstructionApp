@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './my_flutter_app_icons.dart';
 import './questionnaire.dart';
+import './statements.dart';
+import './call_agent.dart';
+import './contact_us.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -37,26 +40,31 @@ class HomePage extends StatelessWidget {
                             decoration: BoxDecoration(color: Colors.redAccent),
                             child: FlatButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Questionnaire()));
-                                print("Questionnaire Pressed");
+                                // print("object");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Questionnaire()));
                               },
                               child: Container(
                                 margin: EdgeInsets.only(top: 40.0),
                                 child: Column(
                                   children: <Widget>[
                                     Center(
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(
-                                          FontAwesomeIcons.question,
-                                          color: Colors.white,
-                                        ),
+                                      child: Icon(
+                                        FontAwesomeIcons.question,
+                                        color: Colors.white,
                                       ),
                                     ),
                                     Center(
-                                      child: Text(
-                                        "Questionnaire",
-                                        style: TextStyle(color: Colors.white),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(top: 10),
+                                        child: Text(
+                                          "Questionnaire",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12),
+                                        ),
                                       ),
                                     )
                                   ],
@@ -72,25 +80,32 @@ class HomePage extends StatelessWidget {
                             decoration: BoxDecoration(color: Colors.redAccent),
                             child: FlatButton(
                               onPressed: () {
-                                print("My statement pressed");
+                                // print("My statement pressed");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Statements()));
                               },
                               child: Container(
                                   margin: EdgeInsets.only(top: 40.0),
                                   child: Column(
                                     children: <Widget>[
                                       Center(
-                                        child: IconButton(
-                                          onPressed: (){},
-                                          icon: Icon(
-                                            FontAwesomeIcons.book,
-                                            color: Colors.white,
-                                          ),
+                                        child: Icon(
+                                          FontAwesomeIcons.book,
+                                          color: Colors.white,
                                         ),
                                       ),
                                       Center(
-                                        child: Text(
-                                          "My Statement",
-                                          style: TextStyle(color: Colors.white),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(top: 10),
+                                          child: Text(
+                                            "My Statement",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12),
+                                          ),
                                         ),
                                       )
                                     ],
@@ -109,19 +124,20 @@ class HomePage extends StatelessWidget {
                             decoration: BoxDecoration(color: Colors.redAccent),
                             child: FlatButton(
                               onPressed: () {
-                                print("Call Pressed");
+                                // print("Call Pressed");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CallAgent()));
                               },
                               child: Container(
                                   margin: EdgeInsets.only(top: 40.0),
                                   child: Column(
                                     children: <Widget>[
                                       Center(
-                                        child: IconButton(
-                                          onPressed: (){},
-                                          icon: Icon(
-                                            FontAwesomeIcons.phone,
-                                            color: Colors.white,
-                                          ),
+                                        child: Icon(
+                                          FontAwesomeIcons.phone,
+                                          color: Colors.white,
                                         ),
                                       ),
                                       Center(
@@ -142,19 +158,20 @@ class HomePage extends StatelessWidget {
                             decoration: BoxDecoration(color: Colors.redAccent),
                             child: FlatButton(
                               onPressed: () {
-                                print("Contact pressed");
+                                // print("Contact pressed");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ContactUs()));
                               },
                               child: Container(
                                   margin: EdgeInsets.only(top: 40.0),
                                   child: Column(
                                     children: <Widget>[
                                       Center(
-                                        child: IconButton(
-                                          onPressed: (){},
-                                          icon: Icon(
-                                            FontAwesomeIcons.user,
-                                            color: Colors.white,
-                                          ),
+                                        child: Icon(
+                                          FontAwesomeIcons.user,
+                                          color: Colors.white,
                                         ),
                                       ),
                                       Center(

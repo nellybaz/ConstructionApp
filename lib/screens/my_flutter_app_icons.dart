@@ -20,6 +20,10 @@
 ///         Author:    Aristeides Stathopoulos
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://aristeides.com/
+/// * Material Design Icons, Copyright (C) Google, Inc
+///         Author:    Google
+///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+///         Homepage:  https://design.google.com/icons/
 /// * MFG Labs, Copyright (C) 2012 by Daniel Bruce
 ///         Author:    MFG Labs
 ///         License:   SIL (http://scripts.sil.org/OFL)
@@ -56,4 +60,10 @@ class MyFlutterApp {
   static const IconData facebook_official = const IconData(0xf230, fontFamily: _kFontFam);
   static const IconData facebook_rect = const IconData(0xf301, fontFamily: _kFontFam);
   static const IconData facebook_squared = const IconData(0xf308, fontFamily: _kFontFam);
+  static const IconData apps = const IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData file_download = const IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData smartphone = const IconData(0xe802, fontFamily: _kFontFam);
+  static const IconData mail_outline = const IconData(0xe803, fontFamily: _kFontFam);
+  // static const IconData facebook_circled = const IconData(0xf051, fontFamily: _kFontFam);
+  // static const IconData twitter_circled = const IconData(0xf057, fontFamily: _kFontFam);
 }
