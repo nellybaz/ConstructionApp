@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
+import './homepage.dart';
 
 class Signin extends StatelessWidget {
   @override
@@ -29,7 +30,9 @@ class Signin extends StatelessWidget {
               SizedBox(
                 width: 150,
                 child: OutlineButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder:(context)=> HomePage()));
+                  },
                   borderSide: BorderSide(
                     color: primaryColor,
                   ),

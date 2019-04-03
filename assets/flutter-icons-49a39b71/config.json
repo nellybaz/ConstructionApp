@@ -1,0 +1,40 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "8486605acad5af293679d4607fd47e87",
+      "css": "mail_outline",
+      "code": 59392,
+      "src": "material"
+    },
+    {
+      "uid": "f8d155b8efc5e1891177808278483fbd",
+      "css": "smartphone",
+      "code": 59394,
+      "src": "material"
+    },
+    {
+      "uid": "6cc7af3e5b55720bcb6ef68372ce24be",
+      "css": "facebook-official",
+      "code": 62000,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "4568bba1dba45522fc539c733c9b35e5",
+      "css": "twitter",
+      "code": 59393,
+      "src": "typicons"
+    },
+    {
+      "uid": "41a48eecc95e7f6cf8bb4820dc99d2f3",
+      "css": "file_download",
+      "code": 59395,
+      "src": "material"
+    }
+  ]
+}
