@@ -9,7 +9,7 @@ class QuestionnaireInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20.0),
+      margin: EdgeInsets.only(bottom: 20.0), 
       child: Column(
         children: <Widget>[
           Row(
