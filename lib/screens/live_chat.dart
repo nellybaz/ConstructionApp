@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../globals.dart';
+import 'homepage.dart';
 
 String title = "Live Chat";
 String status1 = "Searching";
@@ -17,21 +19,24 @@ class LiveChat extends StatelessWidget {
     return new MaterialApp(
         theme: ThemeData(fontFamily: 'Open Sans'),
         home: Scaffold(
-          drawer: Drawer(),
           appBar: new AppBar(
+            centerTitle: true,
             leading: Builder(
               builder: (context) => IconButton(
                     icon: new Icon(Icons.apps),
-                    onPressed: () => Scaffold.of(context).openDrawer(),
+                    onPressed: () {
+                      Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                    }
                   ),
             ),
-            title: new Center(
-              child: Text(
-                title,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+            title: Text(
+              title,
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            backgroundColor: Color(0xffEB6B5E),
+            backgroundColor: primaryColor,
           ),
           body: ListView(
             padding: EdgeInsets.only(top: 25.0),
@@ -50,7 +55,7 @@ class LiveChat extends StatelessWidget {
                         Text(
                           status2,
                           style:
-                              TextStyle(color: Color(0xffEB6B5E), fontSize: 20),
+                              TextStyle(color: primaryColor, fontSize: 20),
                         )
                       ],
                     ),
@@ -79,13 +84,14 @@ class LiveChat extends StatelessWidget {
                 child: Container(
                   height: 250,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xffEB6B5E))),
+                    border: Border.all(color: primaryColor)),
                   child: Column(
                     children: <Widget>[
                       Container(
                         decoration: BoxDecoration(
                             color: Color(0xffEEEEEE),
-                            border: Border.all(color: Color(0xffEB6B5E))),
+                            border: Border(bottom: BorderSide(color:primaryColor)),),
+                            
                         padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                         child: Row(
                           children: <Widget>[
@@ -94,7 +100,7 @@ class LiveChat extends StatelessWidget {
                             ),
                             Text(
                               "Online",
-                              style: TextStyle(color: Color(0xffEB6B5E)),
+                              style: TextStyle(color: primaryColor),
                             )
                           ],
                         ),
@@ -122,7 +128,7 @@ class LiveChat extends StatelessWidget {
                   children: <Widget>[
                   
                     Row(children:<Widget>[Text("Type a new message here"), 
-                    Padding(padding:EdgeInsets.fromLTRB(25, 2.5, 0, 0) ,child: Text("Attach files", style: TextStyle(color: Color(0xffEB6B5E), fontSize: 8),))]),
+                    Padding(padding:EdgeInsets.fromLTRB(25, 2.5, 0, 0) ,child: Text("Attach files", style: TextStyle(color: primaryColor, fontSize: 8),))]),
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 25, 0, 25),
                       decoration: BoxDecoration(border: Border.all(color: Color(0xff000000),width: 0.5)),
@@ -137,7 +143,7 @@ class LiveChat extends StatelessWidget {
                     child: new RaisedButton(
                       onPressed: () {},
                       child: Text("SEND", style: TextStyle(color: Colors.white),),
-                      color: Colors.redAccent,
+                      color: primaryColor,
                     ),
                   ),
                 ),

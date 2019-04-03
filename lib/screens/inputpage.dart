@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'UserInput.dart';
 import './my_flutter_app_icons.dart';
+import '../globals.dart';
 
 class InputPage extends StatelessWidget{
   @override
@@ -48,7 +49,7 @@ class InputPage extends StatelessWidget{
                     child: RaisedButton(
                       onPressed: () {},
                       textColor: Colors.white,
-                      color: Colors.redAccent,
+                      color: primaryColor,
                       splashColor: Colors.orangeAccent,
                       child: Text(
                         "SIGN UP",
@@ -77,7 +78,7 @@ class InputPage extends StatelessWidget{
                         onPressed: () {},
                         icon: new Icon(
                           FontAwesomeIcons.google,
-                          color: Colors.redAccent,
+                          color: primaryColor,
                         ),
                       ),
                       IconButton(

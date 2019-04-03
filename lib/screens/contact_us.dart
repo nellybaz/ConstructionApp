@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'my_flutter_app_icons.dart';
+import '../globals.dart';
+import 'homepage.dart';
 
 String title = "Contact Us";
 String about =
@@ -14,19 +16,23 @@ class ContactUs extends StatelessWidget {
       home: Scaffold(
         drawer: new Drawer(),
         appBar: new AppBar(
+          centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(
                   icon: new Icon(Icons.apps),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
+                  onPressed: () {
+                      Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                    }
                 ),
           ),
-          title: new Center(
-            child: Text(
-              title,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+          title: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Color(0xffEB6B5E),
+          backgroundColor: primaryColor,
         ),
         body: ListView(children: <Widget>[
           new Padding(
@@ -97,11 +103,11 @@ class ContactUs extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(MyFlutterApp.twitter_circled),
+                      icon: Icon(MyFlutterApp.twitter_1),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(MyFlutterApp.facebook_circled),
+                      icon: Icon(MyFlutterApp.facebook_squared),
                       onPressed: () {},
                     ),
                   ],
@@ -156,7 +162,7 @@ class ContactUs extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    color: Color(0xffEB6B5E),
+                    color: primaryColor,
                   ),
                 )
               ],

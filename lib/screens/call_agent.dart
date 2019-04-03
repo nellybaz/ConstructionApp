@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'live_chat.dart';
+import '../globals.dart';
+import 'homepage.dart';
 
 String title = "Call an Agent";
 String heading = "Chat with one of our Service Agents";
@@ -13,19 +16,23 @@ class CallAgent extends StatelessWidget {
         home: Scaffold(
             drawer: new Drawer(),
             appBar: new AppBar(
+            centerTitle: true,
               leading: Builder(
                 builder: (context) => IconButton(
                       icon: new Icon(Icons.apps),
-                      onPressed: () => Scaffold.of(context).openDrawer(),
+                      onPressed: () {
+                      Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                    }
                     ),
               ),
-              title: new Center(
-                child: Text(
-                  title,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+              title: Text(
+                title,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              backgroundColor: Color(0xffEB6B5E),
+              backgroundColor: primaryColor,
             ),
             body: ListView(
               padding: EdgeInsets.all(25.0),
@@ -59,7 +66,7 @@ class CallAgent extends StatelessWidget {
                         child: Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                              color: Color(0xffEB6B5E),
+                              color: primaryColor,
                             )),
                             child: TextFormField(
                               // maxLines: 2,
@@ -75,7 +82,7 @@ class CallAgent extends StatelessWidget {
                         child: Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                              color: Color(0xffEB6B5E),
+                              color: primaryColor,
                             )),
                             child: TextFormField(
                               // maxLines: 2,
@@ -91,7 +98,7 @@ class CallAgent extends StatelessWidget {
                         child: Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                              color: Color(0xffEB6B5E),
+                              color: primaryColor,
                             )),
                             child: TextFormField(
                               // maxLines: 2,
@@ -99,22 +106,29 @@ class CallAgent extends StatelessWidget {
                                   InputDecoration(border: InputBorder.none),
                             )),
                       ),
-                      Padding(padding: EdgeInsets.only(top:10),
-                                              child: RaisedButton(
-                            onPressed: () {},
-                            color: Color(0xffEB6B5E),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: RaisedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LiveChat()));
+                            },
+                            color: primaryColor,
                             child: Padding(
                               padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
                               child: Text(
-                                "LIVE CHART",
+                                "LIVE CHAT",
                                 style: TextStyle(color: Colors.white),
                               ),
                             )),
                       ),
-                      Padding(padding: EdgeInsets.only(top:20),
-                                              child: RaisedButton(
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: RaisedButton(
                           onPressed: () {},
-                          color: Color(0xffEB6B5E),
+                          color: primaryColor,
                           child: Padding(
                               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                               child: Text(
