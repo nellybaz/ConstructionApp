@@ -1,4 +1,7 @@
+// 
 import 'package:flutter/material.dart';
+import '../globals.dart';
+import 'homepage.dart';
 
 String title = "My Statement";
 String topText =
@@ -12,18 +15,23 @@ class Statements extends StatelessWidget {
       home: Scaffold(
         drawer: Drawer(),
         appBar: AppBar(
+          centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(
                   icon: new Icon(Icons.apps),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
+                  onPressed: () {
+                      Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                    }
                 ),
           ),
-          title: Center(
-              child: Text(
+          title: Text(
             title,
             style: TextStyle(fontWeight: FontWeight.bold),
-          )),
-          backgroundColor: Color(0xffEB6B5E),
+          ),
+          backgroundColor: primaryColor,
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(50.0, 25.0, 50.0, 25.0),
@@ -60,12 +68,12 @@ class Statements extends StatelessWidget {
                       padding: EdgeInsets.only(left: 5),
                       height: 250,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.red)),
+                          border: Border.all(width: 1, color: primaryColor)),
                       child: TextField(
                           maxLines: null,
                           decoration: InputDecoration(border: InputBorder.none
                               // border: OutlineInputBorder(
-                              //     borderSide: BorderSide(color: Colors.red)),
+                              //     borderSide: BorderSide(color: primaryColor)),
                               ),
                           style: TextStyle(
                               // height: 10,
@@ -81,7 +89,7 @@ class Statements extends StatelessWidget {
                     child: new RaisedButton(
                       onPressed: () {},
                       child: Text("DOWNLOAD", style: TextStyle(color: Colors.white)),
-                      color: Colors.redAccent,
+                      color: primaryColor,
                     ),
                   ),
                 ),

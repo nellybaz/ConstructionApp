@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'my_flutter_app_icons.dart';
+import '../globals.dart';
+import 'homepage.dart';
 
 String title = "Contact Us";
 String about =
@@ -14,19 +16,20 @@ class ContactUs extends StatelessWidget {
       home: Scaffold(
         drawer: new Drawer(),
         appBar: new AppBar(
+          centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(
-                  icon: new Icon(Icons.apps),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
-                ),
+                icon: new Icon(Icons.apps),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                }),
           ),
-          title: new Center(
-            child: Text(
-              title,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+          title: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Color(0xffEB6B5E),
+          backgroundColor: primaryColor,
         ),
         body: ListView(children: <Widget>[
           new Padding(
@@ -64,13 +67,15 @@ class ContactUs extends StatelessWidget {
                   about,
                   style: new TextStyle(fontSize: 14),
                 ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
-                    child: Text(
-                      "You can contact us via these means",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    )),
+                Align(alignment: FractionalOffset(0, 0),
+                                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
+                      child: Text(
+                        "You can contact us via these means",
+                        style:
+                            TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      )),
+                ),
                 Row(
                   children: <Widget>[
                     // Icon for mail;
@@ -91,24 +96,28 @@ class ContactUs extends StatelessWidget {
                     Text("+250 889 8953")
                   ],
                 ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
-                    child: Text("Say hello to us on social media")),
+                Align(alignment: FractionalOffset(0, 0),
+                                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
+                      child: Text("Say hello to us on social media")),
+                ),
                 Row(
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(MyFlutterApp.twitter_circled),
+                      icon: Icon(MyFlutterApp.twitter_1),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(MyFlutterApp.facebook_circled),
+                      icon: Icon(MyFlutterApp.facebook),
                       onPressed: () {},
                     ),
                   ],
                 ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
-                    child: Text("Send Us Feedback")),
+                Align(alignment: FractionalOffset(0, 0),
+                                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
+                      child: Text("Send Us Feedback", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
+                ),
 
                 TextFormField(
                   decoration: InputDecoration(
@@ -156,7 +165,7 @@ class ContactUs extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    color: Color(0xffEB6B5E),
+                    color: primaryColor,
                   ),
                 )
               ],

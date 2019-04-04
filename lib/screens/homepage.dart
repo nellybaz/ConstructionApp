@@ -5,17 +5,20 @@ import './questionnaire.dart';
 import './statements.dart';
 import './call_agent.dart';
 import './contact_us.dart';
+import '../globals.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var redAccent = Colors.redAccent;
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Open Sans'),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.redAccent,
+          backgroundColor: primaryColor,
           title: Text(
             "Home Page",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
           leading: IconButton(
@@ -28,7 +31,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(
-                    top: 140.0, left: 50.0, right: 50.0, bottom: 20.0),
+                    top: 100.0, left: 50.0, right: 50.0, bottom: 20.0),
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -37,7 +40,7 @@ class HomePage extends StatelessWidget {
                           child: Container(
                             margin: EdgeInsets.only(right: 15.0, bottom: 10.0),
                             height: 160.0,
-                            decoration: BoxDecoration(color: Colors.redAccent),
+                            decoration: BoxDecoration(color: primaryColor),
                             child: FlatButton(
                               onPressed: () {
                                 // print("object");
@@ -47,8 +50,8 @@ class HomePage extends StatelessWidget {
                                         builder: (context) => Questionnaire()));
                               },
                               child: Container(
-                                margin: EdgeInsets.only(top: 40.0),
                                 child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Center(
                                       child: Icon(
@@ -75,9 +78,10 @@ class HomePage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
+                            
                             margin: EdgeInsets.only(left: 15.0, bottom: 10.0),
                             height: 160.0,
-                            decoration: BoxDecoration(color: Colors.redAccent),
+                            decoration: BoxDecoration(color: primaryColor),
                             child: FlatButton(
                               onPressed: () {
                                 // print("My statement pressed");
@@ -87,8 +91,8 @@ class HomePage extends StatelessWidget {
                                         builder: (context) => Statements()));
                               },
                               child: Container(
-                                  margin: EdgeInsets.only(top: 40.0),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Center(
                                         child: Icon(
@@ -119,9 +123,9 @@ class HomePage extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(right: 15.0, top: 70.0),
+                            margin: EdgeInsets.only(right: 15.0, top: 50.0),
                             height: 160.0,
-                            decoration: BoxDecoration(color: Colors.redAccent),
+                            decoration: BoxDecoration(color: primaryColor),
                             child: FlatButton(
                               onPressed: () {
                                 // print("Call Pressed");
@@ -131,8 +135,8 @@ class HomePage extends StatelessWidget {
                                         builder: (context) => CallAgent()));
                               },
                               child: Container(
-                                  margin: EdgeInsets.only(top: 40.0),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Center(
                                         child: Icon(
@@ -141,9 +145,11 @@ class HomePage extends StatelessWidget {
                                         ),
                                       ),
                                       Center(
-                                        child: Text(
-                                          "Call an Agent",
-                                          style: TextStyle(color: Colors.white),
+                                        child: Padding(padding: EdgeInsets.only(top: 10),
+                                                                                  child: Text(
+                                            "Call an Agent",
+                                            style: TextStyle(color: Colors.white, fontSize: 12),
+                                          ),
                                         ),
                                       )
                                     ],
@@ -153,9 +159,9 @@ class HomePage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(left: 15.0, top: 70.0),
+                            margin: EdgeInsets.only(left: 15.0, top: 50.0),
                             height: 160.0,
-                            decoration: BoxDecoration(color: Colors.redAccent),
+                            decoration: BoxDecoration(color: primaryColor),
                             child: FlatButton(
                               onPressed: () {
                                 // print("Contact pressed");
@@ -165,8 +171,8 @@ class HomePage extends StatelessWidget {
                                         builder: (context) => ContactUs()));
                               },
                               child: Container(
-                                  margin: EdgeInsets.only(top: 40.0),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Center(
                                         child: Icon(
@@ -175,9 +181,11 @@ class HomePage extends StatelessWidget {
                                         ),
                                       ),
                                       Center(
-                                        child: Text(
-                                          "Contact Us",
-                                          style: TextStyle(color: Colors.white),
+                                        child: Padding(padding: EdgeInsets.only(top: 10),
+                                                                                  child: Text(
+                                            "Contact Us",
+                                            style: TextStyle(color: Colors.white, fontSize: 12),
+                                          ),
                                         ),
                                       )
                                     ],
@@ -191,9 +199,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 130.0),
+                margin: EdgeInsets.only(bottom: 50),
                 child: FlatButton(
-                    padding: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.only(top:20.0),
                     // color: Colors.white,
                     splashColor: Colors.tealAccent,
                     onPressed: () {
@@ -201,7 +209,7 @@ class HomePage extends StatelessWidget {
                     },
                     child: Text(
                       "Sign Out",
-                      style: TextStyle(color: Colors.redAccent),
+                      style: TextStyle(color: primaryColor),
                     )),
               )
             ],

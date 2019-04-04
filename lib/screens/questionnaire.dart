@@ -3,26 +3,33 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './my_flutter_app_icons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'questionnaireinput.dart';
+import '../globals.dart';
+import './homepage.dart';
 
 class Questionnaire extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Open Sans'),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Questionnaire"),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: primaryColor,
           centerTitle: true,
-          leading: IconButton(
-            onPressed: (){},
-            icon: Icon(MyFlutterApp.th, color: Colors.white),
+          leading: Builder(
+            builder: (context) => IconButton(
+                icon: new Icon(Icons.apps),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                }),
           ),
         ),
         body: ListView(
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10, bottom: 10, left: 50, right: 50),
-              // decoration: BoxDecoration(color: Colors.redAccent),
+              // decoration: BoxDecoration(color: primaryColor),
               child: Column(
                 children: <Widget>[
                   Text(
@@ -61,7 +68,7 @@ class Questionnaire extends StatelessWidget {
                                     hintText: "Describe the project in detail",
                                     enabledBorder: OutlineInputBorder(
                                         borderSide:
-                                            BorderSide(color: Colors.redAccent),
+                                            BorderSide(color: primaryColor),
                                         borderRadius:
                                             BorderRadius.circular(15.0))),
                                 maxLines: 2,
@@ -101,7 +108,7 @@ class Questionnaire extends StatelessWidget {
                                     side: BorderSide(
                                         width: 1.0,
                                         style: BorderStyle.solid,
-                                        color: Colors.redAccent),
+                                        color: primaryColor),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15.0)),
                                   ),
@@ -202,7 +209,7 @@ class Questionnaire extends StatelessWidget {
                               side: BorderSide(
                                   width: 1.0,
                                   style: BorderStyle.solid,
-                                  color: Colors.redAccent),
+                                  color: primaryColor),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15.0)),
                             ),
@@ -250,7 +257,7 @@ class Questionnaire extends StatelessWidget {
                                     side: BorderSide(
                                         width: 1.0,
                                         style: BorderStyle.solid,
-                                        color: Colors.redAccent),
+                                        color: primaryColor),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15.0)),
                                   ),
@@ -299,7 +306,7 @@ class Questionnaire extends StatelessWidget {
                                     side: BorderSide(
                                         width: 1.0,
                                         style: BorderStyle.solid,
-                                        color: Colors.redAccent),
+                                        color: primaryColor),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15.0)),
                                   ),
@@ -353,7 +360,7 @@ class Questionnaire extends StatelessWidget {
                               side: BorderSide(
                                   width: 1.0,
                                   style: BorderStyle.solid,
-                                  color: Colors.redAccent),
+                                  color: primaryColor),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15.0)),
                             ),
@@ -385,7 +392,7 @@ class Questionnaire extends StatelessWidget {
                       child: RaisedButton(
                         onPressed: () {},
                         textColor: Colors.white,
-                        color: Colors.redAccent,
+                        color: primaryColor,
                         splashColor: Colors.orangeAccent,
                         child: Text(
                           "SUBMIT",
