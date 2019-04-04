@@ -19,14 +19,11 @@ class ContactUs extends StatelessWidget {
           centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(
-                  icon: new Icon(Icons.apps),
-                  onPressed: () {
-                      Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                    }
-                ),
+                icon: new Icon(Icons.apps),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                }),
           ),
           title: Text(
             title,
@@ -70,13 +67,15 @@ class ContactUs extends StatelessWidget {
                   about,
                   style: new TextStyle(fontSize: 14),
                 ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
-                    child: Text(
-                      "You can contact us via these means",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    )),
+                Align(alignment: FractionalOffset(0, 0),
+                                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
+                      child: Text(
+                        "You can contact us via these means",
+                        style:
+                            TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      )),
+                ),
                 Row(
                   children: <Widget>[
                     // Icon for mail;
@@ -97,9 +96,11 @@ class ContactUs extends StatelessWidget {
                     Text("+250 889 8953")
                   ],
                 ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
-                    child: Text("Say hello to us on social media")),
+                Align(alignment: FractionalOffset(0, 0),
+                                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
+                      child: Text("Say hello to us on social media")),
+                ),
                 Row(
                   children: <Widget>[
                     IconButton(
@@ -107,14 +108,16 @@ class ContactUs extends StatelessWidget {
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(MyFlutterApp.facebook_squared),
+                      icon: Icon(MyFlutterApp.facebook),
                       onPressed: () {},
                     ),
                   ],
                 ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
-                    child: Text("Send Us Feedback")),
+                Align(alignment: FractionalOffset(0, 0),
+                                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
+                      child: Text("Send Us Feedback", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
+                ),
 
                 TextFormField(
                   decoration: InputDecoration(

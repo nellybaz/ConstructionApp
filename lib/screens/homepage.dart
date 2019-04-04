@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(
-                    top: 140.0, left: 50.0, right: 50.0, bottom: 20.0),
+                    top: 100.0, left: 50.0, right: 50.0, bottom: 20.0),
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -123,7 +123,7 @@ class HomePage extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(right: 15.0, top: 70.0),
+                            margin: EdgeInsets.only(right: 15.0, top: 50.0),
                             height: 160.0,
                             decoration: BoxDecoration(color: primaryColor),
                             child: FlatButton(
@@ -159,7 +159,7 @@ class HomePage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(left: 15.0, top: 70.0),
+                            margin: EdgeInsets.only(left: 15.0, top: 50.0),
                             height: 160.0,
                             decoration: BoxDecoration(color: primaryColor),
                             child: FlatButton(
@@ -199,9 +199,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 130.0),
+                margin: EdgeInsets.only(bottom: 50),
                 child: FlatButton(
-                    padding: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.only(top:20.0),
                     // color: Colors.white,
                     splashColor: Colors.tealAccent,
                     onPressed: () {

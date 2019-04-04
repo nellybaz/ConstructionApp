@@ -4,19 +4,25 @@ import './my_flutter_app_icons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'questionnaireinput.dart';
 import '../globals.dart';
+import './homepage.dart';
 
 class Questionnaire extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Open Sans'),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Questionnaire"),
           backgroundColor: primaryColor,
           centerTitle: true,
-          leading: IconButton(
-            onPressed: (){},
-            icon: Icon(MyFlutterApp.th, color: Colors.white),
+          leading: Builder(
+            builder: (context) => IconButton(
+                icon: new Icon(Icons.apps),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                }),
           ),
         ),
         body: ListView(
