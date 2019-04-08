@@ -6,6 +6,7 @@ import './statements.dart';
 import './call_agent.dart';
 import './contact_us.dart';
 import '../globals.dart';
+import 'signin.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -16,10 +17,9 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: primaryColor,
-          title: Text(
-            "Home Page",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
-          ),
+          title: Text("Home Page",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           centerTitle: true,
           leading: IconButton(
             onPressed: () {},
@@ -78,7 +78,6 @@ class HomePage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Container(
-                            
                             margin: EdgeInsets.only(left: 15.0, bottom: 10.0),
                             height: 160.0,
                             decoration: BoxDecoration(color: primaryColor),
@@ -92,28 +91,27 @@ class HomePage extends StatelessWidget {
                               },
                               child: Container(
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                        child: Icon(
-                                          FontAwesomeIcons.book,
-                                          color: Colors.white,
-                                        ),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.book,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 10),
+                                      child: Text(
+                                        "My Statement",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 12),
                                       ),
-                                      Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.only(top: 10),
-                                          child: Text(
-                                            "My Statement",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  )),
+                                    ),
+                                  )
+                                ],
+                              )),
                             ),
                           ),
                         )
@@ -136,24 +134,26 @@ class HomePage extends StatelessWidget {
                               },
                               child: Container(
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                        child: Icon(
-                                          FontAwesomeIcons.phone,
-                                          color: Colors.white,
-                                        ),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.phone,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 10),
+                                      child: Text(
+                                        "Call an Agent",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 12),
                                       ),
-                                      Center(
-                                        child: Padding(padding: EdgeInsets.only(top: 10),
-                                                                                  child: Text(
-                                            "Call an Agent",
-                                            style: TextStyle(color: Colors.white, fontSize: 12),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  )),
+                                    ),
+                                  )
+                                ],
+                              )),
                             ),
                           ),
                         ),
@@ -172,24 +172,26 @@ class HomePage extends StatelessWidget {
                               },
                               child: Container(
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                        child: Icon(
-                                          FontAwesomeIcons.user,
-                                          color: Colors.white,
-                                        ),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.user,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 10),
+                                      child: Text(
+                                        "Contact Us",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 12),
                                       ),
-                                      Center(
-                                        child: Padding(padding: EdgeInsets.only(top: 10),
-                                                                                  child: Text(
-                                            "Contact Us",
-                                            style: TextStyle(color: Colors.white, fontSize: 12),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  )),
+                                    ),
+                                  )
+                                ],
+                              )),
                             ),
                           ),
                         ),
@@ -201,15 +203,19 @@ class HomePage extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 50),
                 child: FlatButton(
-                    padding: EdgeInsets.only(top:20.0),
+                    padding: EdgeInsets.only(top: 20.0),
                     // color: Colors.white,
                     splashColor: Colors.tealAccent,
                     onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Signin()));
                       print("You have been signed out");
                     },
                     child: Text(
                       "Sign Out",
-                      style: TextStyle(color: primaryColor),
+                      style: TextStyle(
+                        color: primaryColor,
+                      ),
                     )),
               )
             ],

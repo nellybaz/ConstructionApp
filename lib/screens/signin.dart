@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
-import './homepage.dart';
+import './login.dart';
+import 'inputpage.dart';
 
 class Signin extends StatelessWidget {
   @override
@@ -31,13 +32,14 @@ class Signin extends StatelessWidget {
                 width: 150,
                 child: OutlineButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=> HomePage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                   borderSide: BorderSide(
                     color: primaryColor,
                   ),
                   child: Text(
-                    "SIGN IN",
+                    "LOG IN",
                     style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
@@ -45,7 +47,10 @@ class Signin extends StatelessWidget {
               SizedBox(
                 width: 150,
                 child: OutlineButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => InputPage()));
+                  },
                   borderSide: BorderSide(
                     color: primaryColor,
                     // width: 100
