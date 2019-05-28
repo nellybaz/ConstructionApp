@@ -52,6 +52,7 @@ class Statements extends StatelessWidget {
 
                 Container(
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
                       border: Border.all(width: 1, color: Colors.black)),
                   padding: EdgeInsets.fromLTRB(62.5, 0, 62.5, 0),
                   child: Image.asset(
@@ -65,9 +66,11 @@ class Statements extends StatelessWidget {
                   padding: EdgeInsets.only(top: 15.0),
                   child: Card(
                     child: Container(
+                      
                       padding: EdgeInsets.only(left: 5),
                       height: 250,
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
                           border: Border.all(width: 1, color: primaryColor)),
                       child: TextField(
                           maxLines: null,

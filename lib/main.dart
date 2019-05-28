@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'ConstructionApp',
       theme: ThemeData(
         primarySwatch: Colors.orange,
+        fontFamily: "UbuntuCondensed",
       ),
       home: Splash(),
     );

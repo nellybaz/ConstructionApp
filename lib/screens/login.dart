@@ -29,6 +29,7 @@ class LoginPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                     bottom: 10.0, left: 70.0, right: 70.0, top: 30),
                 child: SizedBox(
+                  height: 48,
                   width: double.infinity,
                   child: RaisedButton(
                     onPressed: () {
@@ -42,7 +43,7 @@ class LoginPage extends StatelessWidget {
                       "LOG IN",
                       style: TextStyle(color: Colors.white),
                     ),
-                    padding: EdgeInsets.all(20.0),
+//                    padding: EdgeInsets.all(20.0),
                   ),
                 ),
               ),

@@ -1,17 +1,147 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import './my_flutter_app_icons.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'questionnaireinput.dart';
 import '../globals.dart';
 import './homepage.dart';
 
-class Questionnaire extends StatelessWidget {
+
+class Questionnaire extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return QuestionnaireState();
+  }
+
+}
+
+class QuestionnaireState extends State<Questionnaire>{
+  final _formKey = GlobalKey<FormState>();
+
+  String questionValue = "one";
+
+  List answers = ["Offices", "New", "New", "New", "New", "New", "New"];
+  // String q1 = "";
+
+  populateAnswers(){
+    // for(int i=0; i < 50; i++){
+    //     answers.add("Offices");
+    // }
+  }
+
+customSelectInput(title, label, options, qNo){
+  List<DropdownMenuItem> displayOptions = [];
+
+  for(int x=0; x < options.length; x ++){
+      displayOptions.add(
+        DropdownMenuItem(
+          value: options[x],
+          child: Text("${options[x]}"),
+        )
+      );
+  }
+  return Padding(
+    padding: const EdgeInsets.only(top:8.0),
+    child: 
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("$title", style: TextStyle(
+          color: Colors.red
+        ),),
+        DropdownButton(
+          value: answers[qNo],
+          isExpanded: true,
+      hint: Text("$label"),
+      style: TextStyle(
+        fontSize: 12,
+        color: Colors.grey
+      ),
+      onChanged: (val){
+        setState(() {
+          answers[qNo] = val;
+        });
+      },
+      items: displayOptions,
+
+    ),
+      ],
+    )
+  );
+}
+
+
+  customPopupMenu(){
+    return PopupMenuButton(
+     itemBuilder: (context)=>[
+        PopupMenuItem(
+          child: Text(" Option 1"),
+        ),
+        PopupMenuItem(
+          child: Text(" Option 2"),
+        )
+     ],
+    );
+  }
+
+  customTextInput(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Text("State"),
+        ),
+        Container(
+      height: 48,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey[400]),
+        borderRadius: BorderRadius.circular(8)
+      ),
+      child: TextFormField(
+        validator: (val)=> val.isEmpty ? "Cannot be empty" : null,
+      decoration: InputDecoration(
+      border: InputBorder.none,
+        labelText: "  Question 1",
+        labelStyle: TextStyle(
+          fontSize: 12,
+          
+        )
+      ),
+
+    ),
+    )
+      ],
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    populateAnswers();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Open Sans'),
       home: Scaffold(
+        floatingActionButton: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8)
+          ),
+          width: MediaQuery.of(context).size.width * 0.40,
+          child: RaisedButton(
+            color: Colors.deepOrangeAccent,
+            onPressed: (){
+
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Send ", style: TextStyle(
+                  color: Colors.white,
+                ),),
+                Icon(Icons.navigate_next, color: Colors.white,),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
           title: Text("Questionnaire"),
           backgroundColor: primaryColor,
@@ -25,389 +155,29 @@ class Questionnaire extends StatelessWidget {
                 }),
           ),
         ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10, left: 50, right: 50),
-              // decoration: BoxDecoration(color: primaryColor),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                      "The following Questions will help us make best projection for your building developments. Please answer them as best to your knowledge"),
-                  Container(
-                    margin: EdgeInsets.only(top: 20.0),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    "Project Description",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 10.0),
-                                    child: Text(
-                                      "{i. e new home, renovation, green, commercial, etc}",
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              TextField(
-                                decoration: InputDecoration(
-                                    hintText: "Describe the project in detail",
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: primaryColor),
-                                        borderRadius:
-                                            BorderRadius.circular(15.0))),
-                                maxLines: 2,
-                              )
-                            ],
-                          ),
-                        ),
-                        QuestionnaireInput("Project Location",
-                            "Describe the project location", false),
-                        QuestionnaireInput(
-                            "Budget Range", "Give your Budget estimate", true),
-                        QuestionnaireInput(
-                            "Time Range",
-                            "Give the time you expect your building to be complete",
-                            false),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 5.0),
-                                    child: Text(
-                                      "What Type of Building",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                width: double.infinity,
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        width: 1.0,
-                                        style: BorderStyle.solid,
-                                        color: primaryColor),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15.0)),
-                                  ),
-                                ),
-                                child: DropdownButton<String>(
-                                    items: <String>[
-                                      'Bungalow',
-                                      'One Storey',
-                                      'Two Storey',
-                                      'Apartments',
-                                      'Flats'
-                                    ].map((String val) {
-                                      return DropdownMenuItem<String>(
-                                        value: val,
-                                        child: Text(val),
-                                      );
-                                    }).toList(),
-                                    hint: Container(
-                                        margin: EdgeInsets.only(left: 10.0),
-                                        child: Text(
-                                            "Please choose the building type")),
-                                    onChanged: (newVal) {}),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    "Number of Floors",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 5.0),
-                                    child: Text(
-                                      "Below are some images to help with your decision",
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              CarouselSlider(
-                                // height: 300.0,
-                                items: [
-                                  "asset/image2.jpeg",
-                                  "asset/image2.jpeg",
-                                  "asset/image2.jpeg",
-                                  "asset/image2.jpeg",
-                                  "asset/image2.jpeg",
-                                  "asset/image2.jpeg"
-                                ].map((i) {
-                                  return Builder(
-                                    builder: (BuildContext context) {
-                                      return Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 8.0),
-                                          child: Stack(
-                                            children: <Widget>[
-                                              Positioned(child: Image.asset(i)),
-                                              Positioned(
-                                                top: 120,
-                                                left: 180,
-                                                child: IconButton(
-                                                  onPressed: () {
-                                                    print("Downloading...");
-                                                  },
-                                                  icon: Icon(
-                                                      FontAwesomeIcons.download,
-                                                      color: Colors.white),
-                                                ),
-                                              )
-                                            ],
-                                          ));
-                                    },
-                                  );
-                                }).toList(),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          width: double.infinity,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1.0,
-                                  style: BorderStyle.solid,
-                                  color: primaryColor),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.0)),
-                            ),
-                          ),
-                          child: DropdownButton<String>(
-                              items: <String>[
-                                'One',
-                                'Two',
-                                'Three',
-                                'Four or Higher'
-                              ].map((String val) {
-                                return DropdownMenuItem<String>(
-                                  value: val,
-                                  child: Text(val),
-                                );
-                              }).toList(),
-                              hint: Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                child: Text(
-                                    "Please choose your preferred Storey size"),
-                              ),
-                              onChanged: (newVal) {}),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 5.0),
-                                    child: Text(
-                                      "Is Sunlight important?",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                width: double.infinity,
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        width: 1.0,
-                                        style: BorderStyle.solid,
-                                        color: primaryColor),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15.0)),
-                                  ),
-                                ),
-                                child: DropdownButton<String>(
-                                    items: <String>[
-                                      'Yes',
-                                      'No',
-                                    ].map((String val) {
-                                      return DropdownMenuItem<String>(
-                                        value: val,
-                                        child: Text(val),
-                                      );
-                                    }).toList(),
-                                    hint: Container(
-                                      margin: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                          "You wanna wake up to Beautiful Mornings"),
-                                    ),
-                                    onChanged: (newVal) {}),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 5.0),
-                                    child: Text(
-                                      "What Type of Cladding do you prefer?",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                width: double.infinity,
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        width: 1.0,
-                                        style: BorderStyle.solid,
-                                        color: primaryColor),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15.0)),
-                                  ),
-                                ),
-                                child: DropdownButton<String>(
-                                    items: <String>[
-                                      'Low Maintenance',
-                                      'Paint Finish Maintenance',
-                                      'Brick',
-                                      'Paster',
-                                      'Shadow Clad'
-                                    ].map((String val) {
-                                      return DropdownMenuItem<String>(
-                                        value: val,
-                                        child: Text(val),
-                                      );
-                                    }).toList(),
-                                    hint: Container(
-                                        margin: EdgeInsets.only(left: 10.0),
-                                        child:
-                                            Text("Specify preferred cladding")),
-                                    onChanged: (newVal) {}),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5.0),
-                              child: Text(
-                                "What type of roofing appeals to you?",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1.0,
-                                  style: BorderStyle.solid,
-                                  color: primaryColor),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.0)),
-                            ),
-                          ),
-                          child: DropdownButton<String>(
-                              items: <String>[
-                                'Long run corrugated iron',
-                                'Ribbed iron',
-                                'Tiles'
-                              ].map((String val) {
-                                return DropdownMenuItem<String>(
-                                  value: val,
-                                  child: Text(val),
-                                );
-                              }).toList(),
-                              hint: Container(
-                                  margin: EdgeInsets.only(left: 10.0),
-                                  child: Text("Choose roofing style")),
-                              onChanged: (newVal) {}),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        bottom: 10.0, left: 70.0, right: 70.0, top: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: RaisedButton(
-                        onPressed: () {},
-                        textColor: Colors.white,
-                        color: primaryColor,
-                        splashColor: Colors.orangeAccent,
-                        child: Text(
-                          "SUBMIT",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        padding: EdgeInsets.all(20.0),
-                      ),
-                    ),
-                  )
-                ],
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: 
+
+          Form(
+                key: _formKey,
+                child: ListView(
+                  // shrinkWrap: true,
+                  children: <Widget>[
+                    customSelectInput("Purpose", "Choose purpose", ["Offices", "Bank", "Hospital", "Hotels"], 0),
+                    customSelectInput("State", "Select the state", ["New", "Renovation", "Extension"], 1),
+                    customSelectInput("Number of floors", "Select the state", ["New", "Renovation", "Extension"], 2),
+                    customSelectInput("Number of basement", "Select the state", ["New", "Renovation", "Extension"], 4),
+                    customSelectInput("Height of last floor", "Height of last floor", ["New", "Renovation", "Extension"], 5),
+                    customSelectInput("Total Area", "Total area", ["New", "Renovation", "Extension"], 5),
+                    customSelectInput("Number of people in building", "Number of people in the building", ["New", "Renovation", "Extension"], 6),
+                    customSelectInput("Estimated budget","Estimated budget", ["New", "Renovation", "Extension"], 6),
+                                       
+
+                  ],
+                ),
               ),
-            )
-          ],
-        ),
-      ),
+      ),)
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
-import 'homepage.dart';
 
 String title = "Live Chat";
 String status1 = "Searching";
@@ -17,7 +16,6 @@ bool agentConnected = false;
 class LiveChat extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implemesnt createState
     return !agentConnected? _Searching():_Connected();
   }
 }
@@ -25,7 +23,6 @@ class LiveChat extends StatefulWidget {
 class _Searching extends State {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         theme: ThemeData(fontFamily: 'Open Sans'),
         home: Scaffold(
