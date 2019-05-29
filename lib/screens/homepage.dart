@@ -20,22 +20,28 @@ class HomePage extends StatelessWidget {
 
   customCard(title, icon, color) {
     return Material(
-      color: color,
+      color: Colors.white,
       elevation: 14,
       shadowColor: Colors.grey[300],
       borderRadius: BorderRadius.circular(14),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(icon),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "$title",
-              style: TextStyle(fontWeight: FontWeight.bold),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          // border: Border.all()
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(icon, color: color,),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "$title",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -68,7 +74,7 @@ class HomePage extends StatelessWidget {
       ),
 
        GestureDetector(
-        child: customCard("Contact us", Icons.contact_mail, Colors.white),
+        child: customCard("Contact us", Icons.contact_mail, Colors.green),
         onTap: () {
           _launchURL(1);
           // Navigator.push(context,

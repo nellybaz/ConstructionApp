@@ -80,25 +80,29 @@ customSelectInput(title, label, options, qNo){
     );
   }
 
-  customTextInput(){
+  customTextInput(String title, String label, int qNo){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.all(10),
-          child: Text("State"),
+          padding: EdgeInsets.only(bottom: 10),
+          child: Text(title, style: TextStyle(
+            color: Colors.red
+          ),),
         ),
         Container(
       height: 48,
+      margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey[400]),
-        borderRadius: BorderRadius.circular(8)
+        borderRadius: BorderRadius.circular(3)
       ),
       child: TextFormField(
+        keyboardType: TextInputType.number,
         validator: (val)=> val.isEmpty ? "Cannot be empty" : null,
       decoration: InputDecoration(
       border: InputBorder.none,
-        labelText: "  Question 1",
+        labelText: " $label",
         labelStyle: TextStyle(
           fontSize: 12,
           
@@ -146,14 +150,14 @@ customSelectInput(title, label, options, qNo){
           title: Text("Questionnaire"),
           backgroundColor: primaryColor,
           centerTitle: true,
-          leading: Builder(
-            builder: (context) => IconButton(
-                icon: new Icon(Icons.apps),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                }),
-          ),
+          // leading: Builder(
+          //   builder: (context) => IconButton(
+          //       icon: new Icon(Icons.apps),
+          //       onPressed: () {
+          //         Navigator.push(context,
+          //             MaterialPageRoute(builder: (context) => HomePage()));
+          //       }),
+          // ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -165,13 +169,13 @@ customSelectInput(title, label, options, qNo){
                   // shrinkWrap: true,
                   children: <Widget>[
                     customSelectInput("Purpose", "Choose purpose", ["Offices", "Bank", "Hospital", "Hotels"], 0),
-                    customSelectInput("State", "Select the state", ["New", "Renovation", "Extension"], 1),
-                    customSelectInput("Number of floors", "Select the state", ["New", "Renovation", "Extension"], 2),
-                    customSelectInput("Number of basement", "Select the state", ["New", "Renovation", "Extension"], 4),
-                    customSelectInput("Height of last floor", "Height of last floor", ["New", "Renovation", "Extension"], 5),
-                    customSelectInput("Total Area", "Total area", ["New", "Renovation", "Extension"], 5),
-                    customSelectInput("Number of people in building", "Number of people in the building", ["New", "Renovation", "Extension"], 6),
-                    customSelectInput("Estimated budget","Estimated budget", ["New", "Renovation", "Extension"], 6),
+                    customSelectInput("State", "Select the state", ["New", "Revamping", "Extension"], 1),
+                    customTextInput("Number of floors", "Enter number of floors",2),
+                    customTextInput("Number of basement", "Enter number of basement",3),
+                    customTextInput("Height of last floor", "Enter Height of last floor", 4),
+                    customSelectInput("Total Area", "Total area", ["New", "Revamping", "Extension"], 5),
+                    customSelectInput("Number of people in building", "Number of people in the building", ["New", "Revamping", "Extension"], 6),
+                    customSelectInput("Estimated budget","Estimated budget", ["New", "Revamping", "Extension"], 6),
                                        
 
                   ],
