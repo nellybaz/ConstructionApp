@@ -18,12 +18,28 @@ class QuestionnaireState extends State<Questionnaire>{
 
   String questionValue = "one";
 
-  List answers = ["Offices", "New", "New", "New", "New", "New", "New"];
+  List answers = ["Hotels", "New", "New", "New", "New", "New", "New"];
   // String q1 = "";
 
-  populateAnswers(){
+  List<TextEditingController> controllersList = [TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),
+  
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  ];
+
+  populateControllers(){
     // for(int i=0; i < 50; i++){
-    //     answers.add("Offices");
+    //     controllersList.add(new TextEditingController());
     // }
   }
 
@@ -86,10 +102,17 @@ customSelectInput(title, label, options, qNo){
   //   return 
   // }
 
+  submit(){
+    for(int x=0; x< controllersList.length; x++){
+      print(answers);
+      print(controllersList[x].text);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    populateAnswers();
+    populateControllers();
   }
   @override
   Widget build(BuildContext context) {
@@ -110,7 +133,9 @@ customSelectInput(title, label, options, qNo){
               onTap: (){
                 var form = _formKey.currentState;
                 if(form.validate()){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=> Specific()));
+                  print("printed");
+                  print(controllersList[0]);
+                    Navigator.push(context, MaterialPageRoute(builder:(context)=> Specific(purpose: answers[0], submitFnc:submit)));
                 }
                 
               },
@@ -148,11 +173,11 @@ customSelectInput(title, label, options, qNo){
                 child: ListView(
                   // shrinkWrap: true,
                   children: <Widget>[
-                    customSelectInput("Purpose", "Choose purpose", ["Offices", "Bank", "Hospital", "Hotels"], 0),
+                    customSelectInput("Purpose", "Choose purpose", ["Hotels", "Administration, offices or bank", "Commercial centers, shops", "Hospital", "Schools", "Housing"], 0),
                     customSelectInput("State", "Select the state", ["New", "Revamping", "Extension"], 1),
-                    CustomTextInput(title:"Number of floors", label:"Enter number of floors"),
-                    CustomTextInput(title:"Number of basement", label:"Enter number of basement"),
-                    CustomTextInput(title:"Height of last floor", label:"Enter Height of last floor"),
+                    CustomTextInput(title:"Number of floors", label:"Enter number of floors", qNo:2, controller: controllersList[2]),
+                    CustomTextInput(title:"Number of basement", label:"Enter number of basement", qNo:3, controller: controllersList[3]),
+                    CustomTextInput(title:"Height of last floor", label:"Enter Height of last floor", qNo:4, controller: controllersList[4]),
                     customSelectInput("Total Area", "Total area", ["New", "Revamping", "Extension"], 5),
                     customSelectInput("Number of people in building", "Number of people in the building", ["New", "Revamping", "Extension"], 6),
                     customSelectInput("Estimated budget","Estimated budget", ["New", "Revamping", "Extension"], 6),

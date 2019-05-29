@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomTextInput extends StatelessWidget{
-  final label;
-  final title;
-  CustomTextInput({this.label, this.title});
-
-  final _textController = TextEditingController();
+  final String label;
+  final String title;
+  final int qNo;
+  final TextEditingController controller;
+  CustomTextInput({this.label, this.title, this.qNo, this.controller});
    @override
    Widget build(BuildContext context) {
    return Column(
@@ -25,8 +25,8 @@ class CustomTextInput extends StatelessWidget{
         borderRadius: BorderRadius.circular(3)
       ),
       child: TextFormField(
-        controller: _textController,
-        onEditingComplete: () => print(_textController.text),
+        controller: controller,
+        onEditingComplete: () => print(controller.text),
         keyboardType: TextInputType.number,
         validator: (val)=> val.isEmpty ? "Cannot be empty" : null,
       decoration: InputDecoration(
