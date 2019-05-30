@@ -5,14 +5,40 @@ class Specific extends StatefulWidget{
   final purpose;
   final submitFnc;
   final controllers;
-  Specific({this.purpose, this.submitFnc, this.controllers});
+  final setAnswers;
+  Specific({this.purpose, this.submitFnc, this.controllers, this.setAnswers});
    @override
    State<StatefulWidget> createState() {
 return SpecificState();
 }
 }
 class SpecificState extends State<Specific>{
+   List<TextEditingController> controllersList = [TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),
+  
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  TextEditingController(),
+  ];
+
   var _formKey = GlobalKey<FormState>();
+
+
+  setStateInParent(){
+    for(int x=0; x<controllersList.length; x++){
+        if(controllersList[x].text != null && controllersList[x].text.length  > 0){
+            widget.setAnswers(x, controllersList[x].text);
+        }
+    }
+  }
    @override
    Widget build(BuildContext context) {
    return Scaffold(
@@ -35,6 +61,7 @@ class SpecificState extends State<Specific>{
                 var form = _formKey.currentState;
                 if(form.validate()){
                   print("validated");
+                  setStateInParent();
                   widget.submitFnc();
                     // Navigator.push(context, MaterialPageRoute(builder:(context)=> Specific(purpose: answers[0],)));
                 }
@@ -43,7 +70,7 @@ class SpecificState extends State<Specific>{
                           child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("Next ", style: TextStyle(
+                  Text("Send ", style: TextStyle(
                     color: Colors.white,
                   ),),
                   Icon(Icons.navigate_next, color: Colors.white,),
@@ -58,9 +85,9 @@ class SpecificState extends State<Specific>{
          key: _formKey,
          child: ListView(
            children: <Widget>[
-                    CustomTextInput(title:"Number of hotel rooms", label:"Enter number of hotel rooms",),
-                    CustomTextInput(title:"Number of car parks", label:"Enter number of car parks"),
-                    CustomTextInput(title:"Number of stairs of hotel", label:"Enter number stairs of hotel"),
+                    CustomTextInput(title:"Number of hotel rooms", label:"Enter number of hotel rooms", controller: controllersList[8],qNo: 8,),
+                    CustomTextInput(title:"Number of car parks", label:"Enter number of car parks", controller: controllersList[9],qNo: 9,),
+                    CustomTextInput(title:"Number of stairs of hotel", label:"Enter number stairs of hotel", controller: controllersList[10], qNo: 10,),
 
            ],
          ),
