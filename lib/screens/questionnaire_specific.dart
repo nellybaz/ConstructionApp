@@ -68,7 +68,7 @@ class SpecificState extends State<Specific>{
                 }
                 
               },
-                          child: Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text("Send ", style: TextStyle(

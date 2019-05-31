@@ -18,7 +18,7 @@ class QuestionnaireState extends State<Questionnaire>{
 
   String questionValue = "one";
 
-  List answers = ["Hotels", "New", "Ground level to first floor", "New", "Greater than 8m", "Greater than 120m", "More than 200", "200000", "New", "New", "New"];
+  List answers = ["Select", "Select", "Select", "Select", "Select", "Select", "Select", "Select", "Select", "Select", "Select"];
 
 
   List<TextEditingController> controllersList = [TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),
@@ -86,36 +86,55 @@ customSelectInputHeight(title, label, options, qNo){
         )
       );
   }
-  return Padding(
-    padding: const EdgeInsets.only(top:8.0),
-    child: 
-    Container(
-      height: 80,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("$title", style: TextStyle(
-            color: Colors.red
-          ),),
-          DropdownButton(
-            value: answers[qNo],
-            isExpanded: true,
-        hint: Text("$label"),
-        style: TextStyle(
-          fontSize: 12,
-          color: Colors.grey
-        ),
-        onChanged: (val){
-          setState(() {
-            answers[qNo] = val;
-          });
-        },
-        items: displayOptions,
+  return Container(
+    margin: EdgeInsets.only(bottom: 10),
+    child: Padding(
+      padding: const EdgeInsets.only(top:8.0),
+      child: 
+       Material(
+        shadowColor: qNo % 2 == 0 ?  Colors.blue[50]:Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        
+        color: qNo % 2 == 0 ? Colors.grey[200]: Colors.white,
+        elevation: qNo % 2 == 0 ? 14: 0,
+            child: Container(
+              padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            // border: Border.all(
+            //   // color: Colors.blue[700],
+            //   width: 1.5
+            // ),
+            borderRadius: BorderRadius.circular(8)
+          ),
+          child:
+      Container(
+        height: 80,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("$title", style: TextStyle(
+              color: Colors.red,
+            ),),
+            DropdownButton(
+              value: answers[qNo],
+              isExpanded: true,
+          hint: Text("$label"),
+          style: TextStyle(
+            fontSize: 12,
+            color: Colors.grey
+          ),
+          onChanged: (val){
+            setState(() {
+              answers[qNo] = val;
+            });
+          },
+          items: displayOptions,
 
-      ),
-        ],
-      ),
-    )
+        ),
+          ],
+        ),
+      )
+    ))),
   );
 }
 
@@ -130,33 +149,57 @@ customSelectInput(title, label, options, qNo){
         )
       );
   }
-  return Padding(
-    padding: const EdgeInsets.only(top:8.0),
-    child: 
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text("$title", style: TextStyle(
-          color: Colors.red
-        ),),
-        DropdownButton(
-          value: answers[qNo],
-          isExpanded: true,
-      hint: Text("$label"),
-      style: TextStyle(
-        fontSize: 12,
-        color: Colors.grey
-      ),
-      onChanged: (val){
-        setState(() {
-          answers[qNo] = val;
-        });
-      },
-      items: displayOptions,
+  return Container(
+    margin: EdgeInsets.only(bottom: 10),
+    child: Padding(
+      padding: const EdgeInsets.only(top:0.0),
+      child: 
+      Material(
+        shadowColor: qNo % 2 == 0 ?  Colors.blue[50]:Colors.white,
+        borderRadius: BorderRadius.circular(8),
+            
+        
+        color: qNo % 2 == 0 ? Colors.grey[200]: Colors.white,
+        elevation: qNo % 2 == 0 ? 14: 0,
+            child: Container(
+              padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            // border: Border.all(
+            //   // color: Colors.blue[700],
+            //   width: 1.5
+            // ),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(8),
+              topLeft: Radius.circular(8),
+            )
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text("$title", style: TextStyle(
+                color: Colors.red
+              ),),
+              DropdownButton(
+                value: answers[qNo],
+                isExpanded: true,
+            hint: Text("$label"),
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey
+            ),
+            onChanged: (val){
+              setState(() {
+                answers[qNo] = val;
+              });
+            },
+            items: displayOptions,
 
+          ),
+            ],
+          ),
+        ),
+      )
     ),
-      ],
-    )
   );
 }
 
@@ -263,14 +306,14 @@ setAnswers(x, value){
                 child: ListView(
                   // shrinkWrap: true,
                   children: <Widget>[
-                    customSelectInput("Purpose", "Choose purpose", ["Hotels", "Administration, offices or bank", "Commercial centers, shops", "Hospital", "Schools", "Housing"], 0),
-                    customSelectInput("State", "Select the state", ["New", "Revamping", "Extension"], 1),
-                    customSelectInputHeight("Number of floors", "Enter number of floors", ["Ground level to first floor", "Second floor to Third floor", "Third floor to Seventh floor", "Up to seven floor and H (height) <28m"], 2),
+                    customSelectInput("Purpose", "Choose purpose", ["Select","Hotels", "Administration, offices or bank", "Commercial centers, shops", "Hospital", "Schools", "Housing"], 0),
+                    customSelectInput("State", "Select the state", ["Select", "New", "Revamping", "Extension"], 1),
+                    customSelectInputHeight("Number of floors", "Enter number of floors", ["Select","Ground level to first floor", "Second floor to Third floor", "Third floor to Seventh floor", "Up to seven floor and H (height) <28m"], 2),
                     CustomTextInput(title:"Number of basement", label:"Enter number of basement", qNo:3, controller: controllersList[3]),
-                    customSelectInput("Height of last floor", "Enter Height of last floor", ["Greater than 8m", "Between 28m and 50m", "Greater than 50m"], 4),
-                    customSelectInput("Total Area", "Total area", ["Greater than 120m", "Greater than 220m", "Between 300m - 500m"], 5),
-                    customSelectInput("Number of people in building", "Number of people in the building", ["More than 200", "More than 120", "More than 500", "Between 500-1000"], 6),
-                    customSelectInput("Estimated budget","Estimated budget", ["200000", "300000", "500000", "100000"], 7),
+                    customSelectInput("Height of last floor", "Enter Height of last floor", ["Select","Greater than 8m", "Between 28m and 50m", "Greater than 50m"], 4),
+                    customSelectInput("Total Area", "Total area", ["Select","Greater than 120m", "Greater than 220m", "Between 300m - 500m"], 5),
+                    customSelectInput("Number of people in building", "Number of people in the building", ["Select","More than 200", "More than 120", "More than 500", "Between 500-1000"], 6),
+                    customSelectInput("Estimated budget","Estimated budget", ["Select","200000", "300000", "500000", "100000"], 7),
                                        
 
                   ],
