@@ -1,4 +1,5 @@
 import 'package:construction_app/components/customTextInput.dart';
+import 'package:construction_app/screens/statements.dart';
 import 'package:flutter/material.dart';
 
 class Specific extends StatefulWidget{
@@ -60,10 +61,10 @@ class SpecificState extends State<Specific>{
               onTap: (){
                 var form = _formKey.currentState;
                 if(form.validate()){
-                  print("validated");
+                  print("ANSWERS BELOW");
                   setStateInParent();
                   widget.submitFnc();
-                    // Navigator.push(context, MaterialPageRoute(builder:(context)=> Specific(purpose: answers[0],)));
+                    Navigator.push(context, MaterialPageRoute(builder:(context)=> Statements()));
                 }
                 
               },

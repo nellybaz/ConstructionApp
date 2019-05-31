@@ -18,7 +18,7 @@ class QuestionnaireState extends State<Questionnaire>{
 
   String questionValue = "one";
 
-  List answers = ["Hotels", "New", "Ground level to first floor", "New", "Greater than 8m", "New", "New", "New", "New", "New", "New"];
+  List answers = ["Hotels", "New", "Ground level to first floor", "New", "Greater than 8m", "Greater than 120m", "More than 200", "200000", "New", "New", "New"];
 
 
   List<TextEditingController> controllersList = [TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),TextEditingController(),
@@ -181,10 +181,21 @@ setAnswers(x, value){
   });
 }
 
+ setStateInParent(){
+    for(int x=0; x<controllersList.length; x++){
+        if(controllersList[x].text != null && controllersList[x].text.length  > 0){
+            setAnswers(x, controllersList[x].text);
+        }
+    }
+  }
   submit(){
+    setStateInParent();
     for(int x=0; x< controllersList.length; x++){
-      print(answers);
-      print(controllersList[x].text);
+      try {
+        print(answers[x]);
+      } catch (e) {
+        print("error is $e");
+      }
     }
   }
 
@@ -257,9 +268,9 @@ setAnswers(x, value){
                     customSelectInputHeight("Number of floors", "Enter number of floors", ["Ground level to first floor", "Second floor to Third floor", "Third floor to Seventh floor", "Up to seven floor and H (height) <28m"], 2),
                     CustomTextInput(title:"Number of basement", label:"Enter number of basement", qNo:3, controller: controllersList[3]),
                     customSelectInput("Height of last floor", "Enter Height of last floor", ["Greater than 8m", "Between 28m and 50m", "Greater than 50m"], 4),
-                    customSelectInput("Total Area", "Total area", ["New", "Revamping", "Extension"], 5),
-                    customSelectInput("Number of people in building", "Number of people in the building", ["New", "Revamping", "Extension"], 6),
-                    customSelectInput("Estimated budget","Estimated budget", ["New", "Revamping", "Extension"], 7),
+                    customSelectInput("Total Area", "Total area", ["Greater than 120m", "Greater than 220m", "Between 300m - 500m"], 5),
+                    customSelectInput("Number of people in building", "Number of people in the building", ["More than 200", "More than 120", "More than 500", "Between 500-1000"], 6),
+                    customSelectInput("Estimated budget","Estimated budget", ["200000", "300000", "500000", "100000"], 7),
                                        
 
                   ],

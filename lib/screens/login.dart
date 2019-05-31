@@ -48,10 +48,10 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.only(top: 100.0),
+                  margin: EdgeInsets.only(top: 20.0),
                   child: Text("or log in with")),
               Container(
-                margin: EdgeInsets.only(left: 75.0, right: 20.0, bottom: 10),
+                margin: EdgeInsets.only(left: 60.0, right: 20.0, bottom: 10),
                 child: Row(
                   children: <Widget>[
                     IconButton(
