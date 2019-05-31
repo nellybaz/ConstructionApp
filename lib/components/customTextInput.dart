@@ -59,6 +59,7 @@ class CustomTextInput extends StatelessWidget{
           labelText: " $label",
           labelStyle: TextStyle(
             fontSize: 12,
+            color: Colors.grey
             
           )
         ),

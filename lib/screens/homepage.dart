@@ -1,3 +1,4 @@
+import 'package:construction_app/screens/statement_list.dart';
 import 'package:flutter/material.dart';
 import './my_flutter_app_icons.dart';
 import './questionnaire.dart';
@@ -59,7 +60,7 @@ class HomePage extends StatelessWidget {
         child:  customCard("Statement", Icons.redeem, Colors.yellow),
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Statements()));
+              MaterialPageRoute(builder: (context) => StatementList()));
         },
       ),
 
