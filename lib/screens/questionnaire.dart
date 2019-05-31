@@ -51,19 +51,19 @@ customSelectInputHeight(title, label, options, qNo){
 
       switch (x) {
         case 1:
-          img = "https://cdn3.vectorstock.com/i/1000x1000/74/02/architecture-design-for-three-storey-building-vector-14477402.jpg";
+          img = "h1.jpg";
           break;
         case 0:
-          img = "http://greenmodule.weebly.com/uploads/1/3/0/5/13058629/7309140_orig.jpg";
+          img = "h2.jpg";
           break;
                 case 2:
-          img = "http://www.jkaarchitects.com/wp-content/uploads/2016/03/1-768x1024.jpg";
+          img = "h3.jpg";
           break;
                 case 1:
-          img = "http://greenmodule.weebly.com/uploads/1/3/0/5/13058629/7309140_orig.jpg";
+          img = "h2.jpg";
           break;
                 case 1:
-          img = "http://greenmodule.weebly.com/uploads/1/3/0/5/13058629/7309140_orig.jpg";
+          img = "h2.jpg";
           break;
         default:
       }
@@ -77,7 +77,7 @@ customSelectInputHeight(title, label, options, qNo){
                 Container(
                   width: 40,
                   height: 50,
-                  child: Image.network("$img"),
+                  child: Image.asset("assets/images/$img"),
                 ),
               Text("${options[x]}")
               ],

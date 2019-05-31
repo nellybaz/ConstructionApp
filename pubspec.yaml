@@ -51,7 +51,9 @@ flutter:
    - assets/images/logo.png
    - assets/images/intro1_pic.png
    - assets/images/welcome.png
-   
+   - assets/images/h1.jpg
+   - assets/images/h2.jpg
+   - assets/images/h3.jpg
    - assets/logo.png
    - assets/kigalipic.png
 
