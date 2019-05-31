@@ -51,19 +51,19 @@ customSelectInputHeight(title, label, options, qNo){
 
       switch (x) {
         case 1:
-          img = "h1.jpg";
+          img = "h2.jpg";
           break;
         case 0:
           img = "h2.jpg";
           break;
                 case 2:
+          img = "h1.jpg";
+          break;
+                case 3:
           img = "h3.jpg";
           break;
-                case 1:
-          img = "h2.jpg";
-          break;
-                case 1:
-          img = "h2.jpg";
+                case 4:
+          img = "h3.jpg";
           break;
         default:
       }
@@ -74,11 +74,12 @@ customSelectInputHeight(title, label, options, qNo){
             height: 60,
             child: Row(
               children: <Widget>[
-                Container(
+               x != 0 ? Container(
                   width: 40,
                   height: 50,
                   child: Image.asset("assets/images/$img"),
-                ),
+                ):
+                Container(),
               Text("${options[x]}")
               ],
             ),
