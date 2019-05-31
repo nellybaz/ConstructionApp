@@ -29,7 +29,9 @@ class StatementList extends StatelessWidget {
                     // image: DecorationImage(
                     //   image: AssetImage("assetName"),
                     // )
+                    
                   ),
+                  // child: Icon(Icons),
                 ),
                 title: Text(x % 2 != 0 ? "Hotel Project": "Office Project"),
                 subtitle: Text("${DateTime.now().toIso8601String()}"),

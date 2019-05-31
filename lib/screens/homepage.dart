@@ -5,7 +5,6 @@ import './questionnaire.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../globals.dart';
-import './statements.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -50,14 +49,14 @@ class HomePage extends StatelessWidget {
   List<Widget> dashBoardList(context) {
     return <Widget>[
       GestureDetector(
-        child: customCard("Questionaire", Icons.people, Colors.redAccent),
+        child: customCard("Questionnaire", Icons.people, Colors.redAccent),
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => Questionnaire()));
         },
       ),
        GestureDetector(
-        child:  customCard("Statement", Icons.redeem, Colors.yellow),
+        child:  customCard("Statements", Icons.redeem, Colors.yellow),
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => StatementList()));
