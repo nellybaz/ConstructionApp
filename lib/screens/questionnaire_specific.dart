@@ -88,7 +88,7 @@ class SpecificState extends State<Specific>{
            children: <Widget>[
                     CustomTextInput(title:"Number of hotel rooms", label:"Enter number of hotel rooms", controller: controllersList[8],qNo: 8,),
                     CustomTextInput(title:"Number of car parks", label:"Enter number of car parks", controller: controllersList[9],qNo: 9,),
-                    CustomTextInput(title:"Number of stairs of hotel", label:"Enter number stairs of hotel", controller: controllersList[10], qNo: 10,),
+                    CustomTextInput(title:"Number of stars of hotel", label:"Enter number stairs of hotel", controller: controllersList[10], qNo: 10,),
 
            ],
          ),
