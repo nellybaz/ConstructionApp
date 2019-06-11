@@ -33,7 +33,7 @@ class Signin extends StatelessWidget {
                 child: OutlineButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
+                        MaterialPageRoute(builder: (context) => LoginPage(), fullscreenDialog: true));
                   },
                   borderSide: BorderSide(
                     color: primaryColor,
@@ -49,7 +49,7 @@ class Signin extends StatelessWidget {
                 child: OutlineButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InputPage()));
+                        MaterialPageRoute(builder: (context) => InputPage(), fullscreenDialog:  true));
                   },
                   borderSide: BorderSide(
                     color: primaryColor,

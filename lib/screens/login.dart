@@ -4,8 +4,23 @@ import 'UserInput.dart';
 import './my_flutter_app_icons.dart';
 import '../globals.dart';
 import 'homepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _LoginPageState();
+  }
+
+}
+
+
+class _LoginPageState extends State<LoginPage>{
+
+
+  bool isBtnPressed = false;
+  var _emailController = TextEditingController();
+  var _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,16 +30,16 @@ class LoginPage extends StatelessWidget {
               EdgeInsets.only(bottom: 0.0, left: 50.0, right: 50.0, top: 120.0),
           child: Column(
             children: <Widget>[
-              UserInput("EMAIL", "jomamady@example.com", false,
-                  Icon(Icons.email, color: Colors.black87)),
-              UserInput(
+              userInput("EMAIL", "jomamady@example.com", false,
+                  Icon(Icons.email, color: Colors.black87), _emailController),
+              userInput(
                   "PASSWORD",
                   ".......",
                   true,
                   Icon(
                     Icons.security,
                     color: Colors.black87,
-                  )),
+                  ), _passwordController),
               Container(
                 margin: EdgeInsets.only(
                     bottom: 10.0, left: 70.0, right: 70.0, top: 30),
@@ -32,14 +47,13 @@ class LoginPage extends StatelessWidget {
                   height: 40,
                   width: double.infinity,
                   child: RaisedButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                    },
+                    onPressed: ()=>validate(context),
                     textColor: Colors.white,
                     color: primaryColor,
                     splashColor: Colors.orangeAccent,
-                    child: Text(
+                    child: isBtnPressed ? CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                    ) : Text(
                       "LOG IN",
                       style: TextStyle(color: Colors.white),
                     ),
@@ -83,5 +97,68 @@ class LoginPage extends StatelessWidget {
         ),
       ]),
     );
+  }
+
+  Widget userInput(_label, _hintText, _obscureText, _icon, _controller){
+    return Container(
+      margin: EdgeInsets.only(bottom: 30.0),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              IconButton(
+                onPressed: (){},
+                icon: _icon,
+              ),
+              Text(
+                _label,
+                style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          TextFormField(
+            controller: _controller,
+            decoration: InputDecoration(
+                hintText: _hintText,
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.redAccent))),
+            obscureText: _obscureText,
+          )
+        ],
+      ),
+    );
+  }
+
+  void validate(context) async{
+    
+    // print(_emailController.text);
+   try{
+     setState(() {
+       isBtnPressed = true;
+     });
+      FirebaseUser fireUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+    print(fireUser);
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+   }
+   catch(e){
+     
+     setState(() {
+       isBtnPressed = false;
+     });
+      print(e);
+
+      return  showDialog(
+        context: context,
+        builder: (context){
+            return AlertDialog(
+              content: Text("Wrong login details"),
+            );
+        }
+      );
+   }
+  }
+
+  loginWithGoogle(){
+    // FirebaseUser firebaseUser = FirebaseAuth.instance.sg
   }
 }
