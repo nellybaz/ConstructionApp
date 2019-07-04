@@ -162,7 +162,6 @@ class _Searching extends State {
 class _Connected extends State {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         theme: ThemeData(fontFamily: 'Open Sans'),
         home: Scaffold(

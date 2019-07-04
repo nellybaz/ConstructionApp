@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'UserInput.dart';
 import './my_flutter_app_icons.dart';
 import '../globals.dart';
 import 'homepage.dart';

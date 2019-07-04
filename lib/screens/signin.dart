@@ -30,34 +30,41 @@ class Signin extends StatelessWidget {
               ),
               SizedBox(
                 width: 150,
-                child: OutlineButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage(), fullscreenDialog: true));
-                  },
-                  borderSide: BorderSide(
-                    color: primaryColor,
-                  ),
-                  child: Text(
-                    "LOG IN",
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                child: Container(
+                  height: 48,
+                  child: OutlineButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage(), fullscreenDialog: true));
+                    },
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                    ),
+                    child: Text(
+                      "LOG IN",
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
                   ),
                 ),
               ),
               SizedBox(
                 width: 150,
-                child: OutlineButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InputPage(), fullscreenDialog:  true));
-                  },
-                  borderSide: BorderSide(
-                    color: primaryColor,
-                    // width: 100
-                  ),
-                  child: Text(
-                    "SIGN UP",
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                child: Container(
+                  margin: EdgeInsets.only(top: 10),
+                  height: 48,
+                  child: OutlineButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => InputPage(), fullscreenDialog:  true));
+                    },
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                      // width: 100
+                    ),
+                    child: Text(
+                      "SIGN UP",
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
                   ),
                 ),
               ),

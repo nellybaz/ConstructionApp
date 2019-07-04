@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'UserInput.dart';
 import './my_flutter_app_icons.dart';
 import '../globals.dart';
 import 'homepage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -95,7 +93,7 @@ class _LoginPageState extends State<LoginPage>
                     margin: EdgeInsets.only(
                         bottom: 10.0, left: 70.0, right: 70.0, top: 30),
                     child: SizedBox(
-                      height: 40,
+                      height: 48,
                       width: double.infinity,
                       child: RaisedButton(
                         onPressed: () => validate(context),
@@ -196,10 +194,10 @@ class _LoginPageState extends State<LoginPage>
       setState(() {
         isBtnPressed = true;
       });
-      FirebaseUser fireUser = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text);
-      print(fireUser);
+      // FirebaseUser fireUser = await FirebaseAuth.instance
+      //     .signInWithEmailAndPassword(
+      //         email: _emailController.text, password: _passwordController.text);
+      // print(fireUser);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
     } catch (e) {

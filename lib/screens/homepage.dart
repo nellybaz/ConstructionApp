@@ -1,7 +1,7 @@
+import 'package:construction_app/screens/questionnaire_new.dart';
 import 'package:construction_app/screens/statement_list.dart';
 import 'package:flutter/material.dart';
 import './my_flutter_app_icons.dart';
-import './questionnaire.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../globals.dart';
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
         child: customCard("Questionnaire", Icons.people, Colors.redAccent),
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Questionnaire()));
+              MaterialPageRoute(builder: (context) => QuestionnaireScreen()));
         },
       ),
        GestureDetector(
