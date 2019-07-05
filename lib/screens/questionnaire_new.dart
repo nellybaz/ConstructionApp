@@ -1,4 +1,5 @@
 import 'package:construction_app/api/app_api.dart';
+import 'package:construction_app/screens/statements.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -20,7 +21,9 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
   TextEditingController _inputController = TextEditingController();
 
   String dropDownAnswerValue = "select";
+  String stringToShow = "";
   int currentIndex = 0;
+  double height= 0;
   
   int currentQuestionID = 0;
 
@@ -31,6 +34,9 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
   List<dynamic> answers = [];
   List activeAnswers = [];
   bool showError = false;
+
+  bool shouldCalNext = false;
+  String calTextToDisplay = "";
 
   fetchData() async {
     // ..fetch all questions
@@ -58,6 +64,21 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
       setState(() {
         isInput = true;
       });
+    }
+
+    if((currentIndex > 0) && (questions[currentIndex-1]['title'] == "Number of floors" || questions[currentIndex-1]['title'] == "Number of rooms")){
+        setState(() {
+          shouldCalNext = true;
+        });
+
+        if(questions[currentIndex-1]['title'] == "Number of floors"){
+          stringToShow = "height";
+        }
+        else{
+          setState(() {
+            stringToShow = "number of people in building";
+          });
+        }
     }
 
     List temp = [];
@@ -186,10 +207,13 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
                                           labelText: "Enter value",
                                           border: InputBorder.none
                                         ),
-                                      ) : DropdownButton(
+                                      ) : shouldCalNext ? Text(" Estimated $stringToShow is $height", textAlign: TextAlign.center, style: TextStyle(
+                                        fontSize: 25
+                                      ),) : DropdownButton(
                                         underline: Container(),
                                         isExpanded: true,
                                         onChanged: (v) {
+                                          addToUserAnswers(v);
                                           setState(() {
                                             dropDownAnswerValue = v;
                                           });
@@ -254,9 +278,30 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
     );
   }
 
+
+  addToUserAnswers(String answer){
+    List temp = [];
+      for(int x=0; x < activeAnswers.length; x++){
+          if(activeAnswers[x]['description'] == answer){
+              temp.add(activeAnswers[x]['id']);
+          }
+      }
+
+      setState(() {
+        selectedAnswers = selectedAnswers + temp;
+      });
+  }
   processNextQuestion() {
+
+    //checking for last item in list
+    if(currentIndex == questions.length -1){
+      print(selectedAnswers);
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => Statements()
+        ));
+    }
    
-    if (dropDownAnswerValue == "select" && _inputController.text.length < 1) { 
+    if (dropDownAnswerValue == "select" && _inputController.text.length < 1 && stringToShow.length < 1 ) { 
       rotateAnimationController.forward();
       setState(() {
         showError = true;
@@ -275,11 +320,15 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
   }
 
   updateAnimations() {
+    
     setState(() {
+      height = _inputController.text.length > 0 && questions[currentIndex]['title'] == "Number of floors"  ? (double.parse(_inputController.text) - 1 ) * 2.8 : questions[currentIndex]['title'] != "Number of floors"  && _inputController.text.length > 0 ? (double.parse(_inputController.text) * 2) + 10  : 0;
       showError = false;
       isInput = false;
+      shouldCalNext = false;
       dropDownAnswerValue = "select";
       _inputController.text = "";
+      stringToShow = "";
       currentIndex = currentIndex < questions.length-1 ? currentIndex + 1 :currentIndex;
       currentQuestionID = questions[currentIndex]['id'];
     });
