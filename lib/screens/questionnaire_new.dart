@@ -142,9 +142,9 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
 
     fadeAnimationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 900));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 700));
 
-    fadeAnimation = Tween<double>(begin: 0, end: 0.6).animate(CurvedAnimation(
+    fadeAnimation = Tween<double>(begin: 0, end: 0.5).animate(CurvedAnimation(
         parent: fadeAnimationController, curve: Interval(0, 1)));
 
       fadeAnimation.addListener(fadeAnimationListener);
