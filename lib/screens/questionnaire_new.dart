@@ -297,7 +297,7 @@ class _QuestionanaireScreenState extends State<QuestionnaireScreen>
     if(currentIndex == questions.length -1){
       print(selectedAnswers);
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Statements()
+          builder: (context) => Statements(selectedAnswers: selectedAnswers, questions: questions, answers: answers,)
         ));
     }
    
